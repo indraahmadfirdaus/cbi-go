@@ -146,55 +146,6 @@ POST /api/login
 
 ---
 
-### 👥 User Management
-
-#### Get All Users
-```http
-GET /api/users
-```
-**Headers:** `Authorization: Bearer <token>`
-
-**Response (200):**
-```json
-[
-  {
-    "id": 1,
-    "username": "john_doe",
-    "email": "john@example.com",
-    "created_at": "2024-01-15T10:30:00Z",
-    "updated_at": "2024-01-15T10:30:00Z"
-  }
-]
-```
-
-#### Get User by ID
-```http
-GET /api/users/{id}
-```
-**Headers:** `Authorization: Bearer <token>`
-
-#### Update User
-```http
-PUT /api/users/{id}
-```
-**Headers:** `Authorization: Bearer <token>`
-
-**Request Body:**
-```json
-{
-  "username": "john_updated",
-  "email": "john_updated@example.com"
-}
-```
-
-#### Delete User
-```http
-DELETE /api/users/{id}
-```
-**Headers:** `Authorization: Bearer <token>`
-
----
-
 ### ✅ Todo Management
 
 #### Get All Todos
