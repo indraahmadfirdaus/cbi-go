@@ -1,31 +1,30 @@
-
 # Go Todo List API - Vercel Edition
 
-Aplikasi Todo List berbasis REST API yang dibangun dengan Go dan di-deploy di Vercel, dilengkapi dengan sistem autentikasi JWT dan manajemen pengguna.
+A REST API-based Todo List application built with Go and deployed on Vercel, complete with JWT authentication system and user management.
 
-## Fitur
+## Features
 
-- ✅ Sistem autentikasi dengan JWT
-- ✅ Manajemen pengguna (registrasi, login)
-- ✅ CRUD operasi untuk todo list
-- ✅ Middleware autentikasi
-- ✅ Validasi input
-- ✅ Error handling yang komprehensif
-- ✅ Serverless deployment di Vercel
+- ✅ JWT authentication system
+- ✅ User management (registration, login)
+- ✅ CRUD operations for todo list
+- ✅ Authentication middleware
+- ✅ Input validation
+- ✅ Comprehensive error handling
+- ✅ Serverless deployment on Vercel
 
-## Teknologi yang Digunakan
+## Technologies Used
 
-- Go - Bahasa pemrograman utama
-- JWT - Untuk autentikasi dan otorisasi
-- bcrypt - Untuk hashing password
-- net/http - HTTP server bawaan Go
-- Vercel - Platform deployment serverless
+- Go - Main programming language
+- JWT - For authentication and authorization
+- bcrypt - For password hashing
+- net/http - Go's built-in HTTP server
+- Vercel - Serverless deployment platform
 
 ## Live Demo
 
-API ini tersedia di: `https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/`
+This API is available at: `https://go-auth-cbi.vercel.app/`
 
-## Struktur Project
+## Project Structure
 
 ```
 go-auth-cbi/
@@ -34,19 +33,19 @@ go-auth-cbi/
 ├── go.mod           # Go module dependencies
 ├── go.sum           # Go module checksums
 ├── vercel.json      # Vercel deployment config
-└── README.md        # Dokumentasi ini
+└── README.md        # This documentation
 ```
 
 ## API Documentation
 
 ### Base URL
 ```
-https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/
+https://go-auth-cbi.vercel.app/
 ```
 
 ### Authentication
 
-Semua endpoint todo memerlukan autentikasi. Sertakan JWT token di header:
+All todo endpoints require authentication. Include JWT token in header:
 ```
 Authorization: Bearer <your-jwt-token>
 ```
@@ -232,7 +231,7 @@ DELETE /api/todos/{id}
 
 ## Error Responses
 
-Semua error response menggunakan format berikut:
+All error responses use the following format:
 
 ```json
 {
@@ -250,16 +249,16 @@ Semua error response menggunakan format berikut:
 - `409` - Conflict
 - `500` - Internal Server Error
 
-## Testing dengan cURL
+## Testing with cURL
 
 ### 1. Test API Status
 ```bash
-curl https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/
+curl https://go-auth-cbi.vercel.app/
 ```
 
 ### 2. Register User
 ```bash
-curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/register \
+curl -X POST https://go-auth-cbi.vercel.app/api/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "testuser",
@@ -270,7 +269,7 @@ curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/registe
 
 ### 3. Login
 ```bash
-curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/login \
+curl -X POST https://go-auth-cbi.vercel.app/api/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "test@example.com",
@@ -278,9 +277,9 @@ curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/login \
   }'
 ```
 
-### 4. Create Todo (dengan token)
+### 4. Create Todo (with token)
 ```bash
-curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/todos \
+curl -X POST https://go-auth-cbi.vercel.app/api/todos \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -291,27 +290,27 @@ curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/todos \
 
 ### 5. Get All Todos
 ```bash
-curl -X GET https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/todos \
+curl -X GET https://go-auth-cbi.vercel.app/api/todos \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 ## Default Test Account
 
-Untuk testing, tersedia akun default:
+For testing purposes, a default account is available:
 - **Email:** `admin@example.com`
 - **Password:** `password123`
 
 ## Vercel Configuration
 
-Proyek ini menggunakan konfigurasi Vercel dengan:
+This project uses Vercel configuration with:
 - **Runtime:** Go 1.x serverless functions
 - **Handler:** `/api/index.go`
 - **Environment Variables:** `JWT_SECRET`
 
-## Kontribusi
+## Contributing
 
-1. Fork repository
-2. Buat feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit perubahan (`git commit -m 'Add amazing feature'`)
-4. Push ke branch (`git push origin feature/amazing-feature`)
-5. Buat Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Create a Pull Request
