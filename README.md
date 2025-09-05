@@ -1,6 +1,7 @@
-# Go Todo List API
 
-Aplikasi Todo List berbasis REST API yang dibangun dengan Go, dilengkapi dengan sistem autentikasi JWT dan manajemen pengguna.
+# Go Todo List API - Vercel Edition
+
+Aplikasi Todo List berbasis REST API yang dibangun dengan Go dan di-deploy di Vercel, dilengkapi dengan sistem autentikasi JWT dan manajemen pengguna.
 
 ## Fitur
 
@@ -10,63 +11,28 @@ Aplikasi Todo List berbasis REST API yang dibangun dengan Go, dilengkapi dengan 
 - ✅ Middleware autentikasi
 - ✅ Validasi input
 - ✅ Error handling yang komprehensif
+- ✅ Serverless deployment di Vercel
 
 ## Teknologi yang Digunakan
 
-- **Go** - Bahasa pemrograman utama
-- **JWT** - Untuk autentikasi dan otorisasi
-- **bcrypt** - Untuk hashing password
-- **net/http** - HTTP server bawaan Go
+- Go - Bahasa pemrograman utama
+- JWT - Untuk autentikasi dan otorisasi
+- bcrypt - Untuk hashing password
+- net/http - HTTP server bawaan Go
+- Vercel - Platform deployment serverless
 
-## Instalasi
+## Live Demo
 
-### Prasyarat
-
-- Go 1.19 atau lebih baru
-- Git
-
-### Langkah Instalasi
-
-1. **Clone repository**
-   ```bash
-   git clone <repository-url>
-   cd go-auth-cbi
-   ```
-
-2. **Install dependencies**
-   ```bash
-   go mod tidy
-   ```
-
-3. **Setup environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Edit file `.env` dan sesuaikan konfigurasi:
-   ```env
-   JWT_SECRET=your-super-secret-jwt-key-here
-   PORT=8080
-   ```
-
-4. **Jalankan aplikasi**
-   ```bash
-   go run .
-   ```
-
-   Server akan berjalan di `http://localhost:8080`
+API ini tersedia di: `https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/`
 
 ## Struktur Project
 
 ```
 go-auth-cbi/
-├── main.go          # Entry point aplikasi
-├── models.go        # Data models dan structs
-├── handlers.go      # HTTP handlers
-├── routes.go        # Route definitions
-├── middleware.go    # Authentication middleware
-├── utils.go         # Utility functions
-├── .env.example     # Environment variables template
+├── api/
+│   └── index.go     # Serverless function handler
+├── go.mod           # Go module dependencies
+├── go.sum           # Go module checksums
 ├── vercel.json      # Vercel deployment config
 └── README.md        # Dokumentasi ini
 ```
@@ -75,7 +41,7 @@ go-auth-cbi/
 
 ### Base URL
 ```
-http://localhost:8080
+https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/
 ```
 
 ### Authentication
@@ -286,9 +252,14 @@ Semua error response menggunakan format berikut:
 
 ## Testing dengan cURL
 
-### 1. Register User
+### 1. Test API Status
 ```bash
-curl -X POST http://localhost:8080/api/register \
+curl https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/
+```
+
+### 2. Register User
+```bash
+curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "testuser",
@@ -297,9 +268,9 @@ curl -X POST http://localhost:8080/api/register \
   }'
 ```
 
-### 2. Login
+### 3. Login
 ```bash
-curl -X POST http://localhost:8080/api/login \
+curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "test@example.com",
@@ -307,9 +278,9 @@ curl -X POST http://localhost:8080/api/login \
   }'
 ```
 
-### 3. Create Todo (dengan token)
+### 4. Create Todo (dengan token)
 ```bash
-curl -X POST http://localhost:8080/api/todos \
+curl -X POST https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/todos \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
@@ -318,31 +289,24 @@ curl -X POST http://localhost:8080/api/todos \
   }'
 ```
 
-### 4. Get All Todos
+### 5. Get All Todos
 ```bash
-curl -X GET http://localhost:8080/api/todos \
+curl -X GET https://go-auth-h5cmnkod8-indrafrds-projects.vercel.app/api/todos \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
-## Deployment
+## Default Test Account
 
-### Vercel
+Untuk testing, tersedia akun default:
+- **Email:** `admin@example.com`
+- **Password:** `password123`
 
-Proyek ini sudah dikonfigurasi untuk deployment di Vercel:
+## Vercel Configuration
 
-1. Install Vercel CLI:
-   ```bash
-   npm i -g vercel
-   ```
-
-2. Deploy:
-   ```bash
-   vercel
-   ```
-
-3. Set environment variables di Vercel dashboard:
-   - `JWT_SECRET`
-   - `PORT` (optional, default: 8080)
+Proyek ini menggunakan konfigurasi Vercel dengan:
+- **Runtime:** Go 1.x serverless functions
+- **Handler:** `/api/index.go`
+- **Environment Variables:** `JWT_SECRET`
 
 ## Kontribusi
 
