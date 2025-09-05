@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.go",
+      "use": "@vercel/go"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/main.go"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/main.go"
+    }
+  ],
+  "env": {
+    "JWT_SECRET": "@jwt_secret",
+    "PORT": "8080"
+  }
+}
